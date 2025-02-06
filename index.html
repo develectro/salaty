@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواقيت الصلاة</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">تطبيق المواقيت</div>
+        <ul class="nav-links">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#">المواقيت</a></li>
+            <li><a href="#">إعدادات</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        
+        <section class="location">
+            <h1>مواقيت الصلاة</h1>
+            <input type="text" id="city-input" placeholder="أدخل اسم المدينة...">
+            <button onclick="updateLocation()">تحديث الموقع</button>
+        </section>
+        
+        <section class="map-container">
+            <img src="map.jpg" alt="خريطة العالم" class="map">
+        </section>    
+        
+        <div class="info-panel">
+            <div class="card1">
+                <div class="clock" id="clock">
+                    <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+                </div>        </div>
+            <div class="card">
+                <h2>التاريخ الميلادي</h2>
+                <div class="hijri-date" id="hijri-date"></div>
+            </div>
+            <div class="card">
+                <h2>التاريخ الهجري</h2>
+                <div class="gregorian-date" id="gregorian-date"></div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="javascript.js">
+        
+    </script>
+</body>
+</html>
