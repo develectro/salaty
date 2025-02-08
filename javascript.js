@@ -15,7 +15,7 @@ setInterval(updateClock, 1000);
 updateClock();
 function updateDates() {
     const now = new Date();
-    document.getElementById("gregorian-date").innerText = now.toLocaleDateString("ar-SA", { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById("gregorian-date").innerText = now.toLocaleDateString('ar-US', { year: 'numeric', month: 'long', day: 'numeric' });
     
     const hijriDate = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', { year: 'numeric', month: 'long', day: 'numeric' }).format(now);
     document.getElementById("hijri-date").innerText = hijriDate;
