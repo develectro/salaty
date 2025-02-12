@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مواقيت الصلاة</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">تطبيق المواقيت</div>
         <ul class="nav-links">
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">المواقيت</a></li>
             <li><a href="#">إعدادات</a></li>
+            <li><a href="#">المواقيت</a></li>
+            <li><a href="#">الرئيسية</a></li>
         </ul>
     </nav>
     
@@ -21,31 +24,29 @@
         <section class="location">
             <h1>مواقيت الصلاة</h1>
             <input type="text" id="city-input" placeholder="أدخل اسم المدينة...">
-            <button onclick="updateLocation()">تحديث الموقع</button>
+            <button class="button" onclick="updateLocation()">تحديث الموقع</button>
         </section>
-        
         <section class="map-container">
-            <img src="map.jpg" alt="خريطة العالم" class="map">
+            <button class="button">الشروق</button>
+            <button class="button">الغروب</button>
+            <button class="button">منتصف الليل</button>
+            <button class="button">الثلث الأخير من الليل</button>
         </section>    
         
         <div class="info-panel">
             <div class="card1">
                 <div class="clock" id="clock">
                     <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
-                </div>        </div>
+                </div>
+            </div>
             <div class="card">
-                <h2></h2>
                 <div class="hijri-date" id="hijri-date"></div>
             </div>
             <div class="card">
-                <h2></h2>
                 <div class="gregorian-date" id="gregorian-date"></div>
             </div>
-            
         </div>
     </div>
-    <script src="javascript.js">
-        
-    </script>
+    <script src="javascript.js"></script>
 </body>
 </html>
