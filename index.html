@@ -19,13 +19,18 @@
     <div class="container">
         
         <section class="location">
-            <h1>مواقيت الصلاة</h1>
+            <h1 class="title">مواقيت الصلاة</h1>
             <input type="text" id="city-input" placeholder="أدخل اسم المدينة...">
-            <button onclick="updateLocation()">تحديث الموقع</button>
+            <button id="search-button" onclick="updateLocation()">تحديث الموقع</button>
         </section>
         
         <section class="map-container">
-            <img src="map.jpg" alt="خريطة العالم" class="map">
+          
+                <div class="time-button" id="sunrise">الشروق</div>
+                <div class="time-button" id="sunset">الغروب</div>
+                <div class="time-button" id="midnight">منتصف الليل</div>
+                <div class="time-button" id="lastThirdStart">الثلث الأخير من الليل</div>
+              
         </section>    
         
         <div class="info-panel">
@@ -34,11 +39,11 @@
                     <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
                 </div>        </div>
             <div class="card">
-                <h2>التاريخ الهجري</h2>
+                <h2 class="date-type">التاريخ الهجري</h2>
                 <div class="hijri-date" id="hijri-date"></div>
             </div>
             <div class="card">
-                <h2>التاريخ الميلادي</h2>
+                <h2 class="date-type">التاريخ الميلادي</h2>
                 <div class="gregorian-date" id="gregorian-date"></div>
             </div>
             

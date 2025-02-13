@@ -1,40 +1,48 @@
-html,body{
+html, body {
     height: 100%;
     width: 100%;
-    margin: 0%;
-    font-size: 70px
+    margin: 0;
+    font-size: 70px;
+    background-color: #FFF3E0; /* لون خلفية برتقالي هادئ */
+    overflow: hidden; /* منع overflow */
 }
-.container{
+
+.container {
     height: 100%;
     width: 100%;
-    background-color: blueviolet;
+    background-color: #FFCC80; /* لون خلفية برتقالي هادئ */
     display: flex;
     gap: auto;
     row-gap: auto;
     flex-direction: column;
     align-items: center;
+    overflow: hidden; /* منع overflow */
 }
-.row1{
-    height: 100%;
+
+.row1, .row2 {
+    height: 50%; /* تعديل الارتفاع لتجنب overflow */
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    background-color: rgb(106, 136, 0);
-
+    justify-content: space-around; /* توزيع البطاقات بالتساوي */
+    background-color: #FFA726; /* لون برتقالي هادئ */
 }
-.row2{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    background-color: rgb(0, 59, 136);
 
+.row2 {
+    background-color: #FFB74D; /* لون برتقالي هادئ */
 }
-#item1,#item2,#item3,#item4{
-    height: 100%;
-    width: 100%;
+
+#item1, #item2, #item3, #item4 {
+    height: 90%; /* تعديل الارتفاع لتجنب overflow */
+    width: 90%; /* تعديل العرض لتجنب overflow */
     display: flex;
     justify-content: center; /* لتوسيط النص أفقياً */
     align-items: center; /* لتوسيط النص عمودياً */
-    text-align: center; 
+    text-align: center;
+    background-color: #FFE0B2; /* لون خلفية برتقالي هادئ */
+    border: 1px solid #FF9800; /* حدود برتقالية */
+    color: #BF360C; /* لون نص برتقالي غامق */
+    margin: 10px; /* فاصل بين البطاقات */
+    border-radius: 5px; /* حواف دائرية بقطر 5 بكسلات */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف للبطاقات */
 }
