@@ -8,6 +8,12 @@
 </head>
 <body>
     <div class="container">
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+        </div>
 
         <div class="row1">
             <div id="item1">
@@ -29,5 +35,13 @@
         </div>
 
     </div>
+    <script>
+        const themeSwitch = document.getElementById('checkbox');
+        const body = document.body;
+
+        themeSwitch.addEventListener('change', () => {
+            body.classList.toggle('dark-mode', themeSwitch.checked);
+        });
+    </script>
 </body>
 </html>

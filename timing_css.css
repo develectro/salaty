@@ -46,3 +46,92 @@ html, body {
     border-radius: 5px; /* حواف دائرية بقطر 5 بكسلات */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف للبطاقات */
 }
+
+/* iPhone-style Toggle Switch */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "☀️";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #f39c12; /* Sun color */
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+}
+
+body.dark-mode .container {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .row1, body.dark-mode .row2 {
+    background-color: #242424;
+}
+
+body.dark-mode #item1, 
+body.dark-mode #item2, 
+body.dark-mode #item3, 
+body.dark-mode #item4 {
+    background-color: #333;
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+input:checked + .slider {
+    background-color: #e67e22;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+    content: "🌙";
+    color: #121212;
+}

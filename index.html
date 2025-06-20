@@ -14,6 +14,12 @@
             <li><a href="#">المواقيت</a></li>
             <li><a href="#">إعدادات</a></li>
         </ul>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+        </div>
     </nav>
     
     <div class="container">
@@ -21,6 +27,7 @@
         <section class="location">
             <h1 class="title">مواقيت الصلاة</h1>
             <input type="text" id="city-input" placeholder="أدخل اسم المدينة...">
+            <p id="city-name">... جاري تحديد الموقع</p>
             <button id="search-button" onclick="updateLocation()">تحديث الموقع</button>
         </section>
         
@@ -49,10 +56,15 @@
             
         </div>
     </div>
-    <script src="javascript.js"></script>
     <script src="geolocation.js"></script>
+    <script src="updateLocation.js"></script>
+    <script>
+        const themeSwitch = document.getElementById('checkbox');
+        const body = document.body;
 
-        
+        themeSwitch.addEventListener('change', () => {
+            body.classList.toggle('dark-mode', themeSwitch.checked);
+        });
     </script>
 </body>
 </html>

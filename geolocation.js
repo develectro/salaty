@@ -13,13 +13,14 @@ if ("geolocation" in navigator) {
 
         //Request API data
         getLocationTiming(lat,lng);
+        getCityName(lat, lng);
        
     },
       // Error callback function
       (error) => {
         // Handle errors, e.g. user denied location sharing permissions
         console.error("Error getting user location:", error);
-        alert("You can Enter location manually")
+        alert("You can Enter location manually");
         return timeString;
       }
     );
@@ -163,9 +164,41 @@ function calculateLastThirdOfNight(sunsetTime, fajrTime) {
 //Render Data
 function renderData(sunrise,sunset,midnight,lastThirdStart){
     //Render data to the DOM
-    document.getElementById("sunrise").innerHTML = sunrise;
-    document.getElementById("sunset").innerHTML = sunset;
-    document.getElementById("midnight").innerHTML = midnight;
-    document.getElementById("lastThirdStart").innerHTML = lastThirdStart;
+   const sunriseText =  document.getElementById("sunrise").innerHTML = sunrise + " :الشروق"
+   const sunsetText = document.getElementById("sunset").innerHTML = sunset + " :الغروب";
+   const midnightText =  document.getElementById("midnight").innerHTML = midnight + " :منتصف الليل";
+    const lastThirdStartText = document.getElementById("lastThirdStart").innerHTML = lastThirdStart +" :الثلث الأخير"
+
+    sunriseText = sunriseText + " " + sunrise;
+    sunsetText = sunsetText + " " + sunset;
+    midnightText = midnightText +  " " + midnight;
+    lastThirdStartText =  lastThirdStartText + " " + lastThirdStart
 }
 
+function getCityName(lat, lon) {
+    const reverseGeocodeAPI = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=ar,en`;
+    
+    fetch(reverseGeocodeAPI)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok for reverse geocoding');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Reverse geocoding data:", data);
+            const city = data.address.city || data.address.town || data.address.village || "موقع غير معروف";
+            const country = data.address.country || "";
+            const cityNameElement = document.getElementById('city-name');
+            if (cityNameElement) {
+                cityNameElement.innerText = `${city}, ${country}`;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching city name:', error);
+            const cityNameElement = document.getElementById('city-name');
+            if (cityNameElement) {
+                cityNameElement.innerText = "لا يمكن تحديد اسم المدينة";
+            }
+        });
+}
