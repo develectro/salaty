@@ -186,7 +186,16 @@ body {
     direction: rtl;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    transition: opacity 0.3s ease-in-out; /* Add transition for fade effect */
 }
 
 .navbar {
@@ -240,13 +249,44 @@ body {
     transform: scale(1.1);
 }
 
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lang-toggle {
+    background: #b66842;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "Tajawal", serif;
+    font-weight: bold;
+}
+
+.lang-toggle:hover {
+    background: #8d4f2f;
+}
+
+body.dark-mode .lang-toggle {
+    background: #e67e22;
+    color: #121212;
+}
+
+body.dark-mode .lang-toggle:hover {
+    background: #f39c12;
+}
+
 .container {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     gap: 20px;
     width: 90%;
-    height: 100vh;
     margin-top: 20px;
 }
 
@@ -340,6 +380,12 @@ input{
     align-items: center;
     justify-content: center;
 }
+.clock .colon {
+    transition: opacity 0.4s ease-in-out;
+    position: relative;
+    /* Adjust vertical alignment of the colon to center it with the numbers */
+    top: -0.1em; 
+}
 #hours, #minutes, #seconds{
     width: 10px;
     height: 10px;
@@ -371,6 +417,10 @@ input{
     border-radius: 10px;
     transition: 0.3s;
     width: 50%;
+    min-height: 65px; /* Prevent vertical collapse during content changes */
+    display: flex; /* Center content vertically and horizontally */
+    align-items: center;
+    justify-content: center;
     direction: ltr;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
@@ -411,6 +461,7 @@ input{
     border-radius: 10px;
     transition: 0.3s;
     width: 20%;
+    min-width: 150px; /* Prevent horizontal collapse during loading */
 }
 #search-button:hover {
     background: #8d4f2f;
@@ -450,7 +501,6 @@ input{
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
-    margin-left: 15px;
 }
 
 .theme-switch {
@@ -605,4 +655,313 @@ input:checked + .slider:before {
     transform: translateX(26px);
     content: "🌙";
     color: #121212;
+}
+
+/* Settings Overlay */
+#settings-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#settings-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel {
+    background: rgba(253, 248, 242, 0.85);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 50%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+}
+
+.settings-panel h2 {
+    color: #703315;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #703315;
+    line-height: 1;
+}
+
+.setting-option h3 {
+    color: #703315;
+    margin-bottom: 15px;
+}
+
+.language-buttons button {
+    background: #b66842;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "Tajawal", serif;
+}
+
+.language-buttons button:hover {
+    background: #8d4f2f;
+}
+
+/* Dark mode styles for settings panel */
+body.dark-mode .settings-panel,
+body.dark-mode .timings-panel {
+    background: rgba(30, 30, 30, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .settings-panel h2,
+body.dark-mode .settings-panel h3,
+body.dark-mode .close-btn,
+body.dark-mode .timings-panel h2 {
+    color: #e67e22;
+}
+
+body.dark-mode .time-display {
+    background: #e67e22;
+    color: #121212;
+}
+
+/* LTR Styles */
+html[lang="en"] body {
+    direction: ltr;
+}
+
+html[lang="en"] .close-btn {
+    left: auto;
+    right: 20px;
+}
+
+/* Timings Overlay */
+#timings-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1999; /* Below settings overlay */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#timings-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.timings-panel {
+    background: rgba(253, 248, 242, 0.85);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+}
+
+.timings-panel h2 {
+    color: #703315;
+}
+
+.timings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.time-display {
+    background: #b66842;
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.5em;
+    border-radius: 10px;
+    direction: ltr;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+/* --- Responsive Design --- */
+
+/* For Tablets & Smaller Devices (e.g., screen width < 992px) */
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 1fr; /* Switch to a single column layout */
+        grid-template-rows: auto;
+        width: 95%;
+        height: auto; /* Let content define the page height */
+        margin-top: 15px;
+        gap: 15px;
+    }
+
+    .location,
+    .map-container,
+    .info-panel {
+        grid-column: 1 / -1; /* Make each section span the full width */
+    }
+
+    .info-panel {
+        grid-row: auto; /* Let the section flow naturally in the new layout */
+        flex-direction: row; /* Allow cards to sit side-by-side */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card, .card1 {
+        flex-basis: 45%; /* Roughly two cards per row */
+        min-width: 280px;
+        flex-grow: 1; /* Ensure cards in the same row grow equally */
+    }
+
+    .timings-panel {
+        width: 70%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .time-button {
+        width: 70%;
+        font-size: 22px;
+    }
+
+    .settings-panel {
+        width: 70%;
+    }
+}
+
+/* For Mobile Phones (e.g., screen width < 600px) */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px; /* Adjust base font size for better readability */
+    }
+
+    .navbar {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        gap: 0;
+    }
+
+    .location, .map-container, .info-panel, .card, .card1 {
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    body.dark-mode .location, 
+    body.dark-mode .map-container, 
+    body.dark-mode .info-panel, 
+    body.dark-mode .card, 
+    body.dark-mode .card1 {
+        border-bottom: 1px solid #444;
+    }
+
+    .info-panel {
+        flex-direction: column; /* Stack date/clock cards vertically */
+        gap: 0;
+    }
+
+    .card, .card1 {
+        flex: 1 1 auto; /* Reset flex behavior for vertical stacking */
+    }
+
+    .time-button {
+        width: 90%; /* Make time buttons take up more width to stack clearly */
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .timings-panel {
+        width: 90%;
+    }
+
+    .settings-panel {
+        width: 90%;
+    }
+}
+
+/* Loading spinner for buttons */
+.loading {
+    color: transparent !important; /* Hide button text */
+    pointer-events: none; /* Prevent clicking while loading */
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    margin-left: -12px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+body.dark-mode .loading::after {
+    border: 3px solid rgba(18, 18, 18, 0.3);
+    border-top-color: #121212;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }

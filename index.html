@@ -7,64 +7,90 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">تطبيق المواقيت</div>
-        <ul class="nav-links">
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">المواقيت</a></li>
-            <li><a href="#">إعدادات</a></li>
-        </ul>
-        <div class="theme-switch-wrapper">
-            <label class="theme-switch" for="checkbox">
-                <input type="checkbox" id="checkbox" />
-                <div class="slider round"></div>
-            </label>
-        </div>
-    </nav>
-    
-    <div class="container">
-        
-        <section class="location">
-            <h1 class="title">مواقيت الصلاة</h1>
-            <input type="text" id="city-input" placeholder="أدخل اسم المدينة...">
-            <p id="city-name">... جاري تحديد الموقع</p>
-            <button id="search-button" onclick="updateLocation()">تحديث الموقع</button>
-        </section>
-        
-        <section class="map-container">
-          
-                <div class="time-button" id="sunrise">الشروق</div>
-                <div class="time-button" id="sunset">الغروب</div>
-                <div class="time-button" id="midnight">منتصف الليل</div>
-                <div class="time-button" id="lastThirdStart">الثلث الأخير من الليل</div>
-              
-        </section>    
-        
-        <div class="info-panel">
-            <div class="card1">
-                <div class="clock" id="clock">
-                    <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
-                </div>        </div>
-            <div class="card">
-                <h2 class="date-type">التاريخ الهجري</h2>
-                <div class="hijri-date" id="hijri-date"></div>
+    <main class="main-content">
+        <nav class="navbar">
+            <div class="logo" data-key="logo">صلاتي</div>
+            <ul class="nav-links">
+                <li><a href="#" data-key="nav_home">الرئيسية</a></li>
+                <li><a href="#" id="timings-btn" data-key="nav_timings">المواقيت</a></li>
+                <li><a href="#" id="settings-btn" data-key="nav_settings">إعدادات</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="lang-toggle-btn" class="lang-toggle">EN</button>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
             </div>
-            <div class="card">
-                <h2 class="date-type">التاريخ الميلادي</h2>
-                <div class="gregorian-date" id="gregorian-date"></div>
-            </div>
+        </nav>
+        
+        <div class="container">
             
+            <section class="location">
+                <h1 class="title" data-key="main_title">مواقيت الصلاة</h1>
+                <input type="text" id="city-input" placeholder="أدخل اسم المدينة..." data-key-placeholder="city_placeholder">
+                <p id="city-name" data-key="city_loading">... جاري تحديد الموقع</p>
+                <button id="search-button" onclick="updateLocation()" data-key="update_location_btn">تحديث الموقع</button>
+            </section>
+            
+            <section class="map-container">
+            
+                    <div class="time-button" id="sunrise" data-key="sunrise">الشروق</div>
+                    <div class="time-button" id="sunset" data-key="sunset">الغروب</div>
+                    <div class="time-button" id="midnight" data-key="midnight">منتصف الليل</div>
+                    <div class="time-button" id="lastThirdStart" data-key="last_third">الثلث الأخير من الليل</div>
+                
+            </section>    
+            
+            <div class="info-panel">
+                <div class="card1">
+                    <div class="clock" id="clock" dir="ltr">
+                        <span id="clock-hours">00</span><span class="colon">:</span><span id="clock-minutes">00</span><span class="colon">:</span><span id="clock-seconds">00</span> <span id="clock-ampm">AM</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2 class="date-type" data-key="hijri_date_title">التاريخ الهجري</h2>
+                    <div class="hijri-date" id="hijri-date"></div>
+                </div>
+                <div class="card">
+                    <h2 class="date-type" data-key="gregorian_date_title">التاريخ الميلادي</h2>
+                    <div class="gregorian-date" id="gregorian-date"></div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    <div id="settings-overlay">
+        <div class="settings-panel">
+            <button id="close-settings" class="close-btn">&times;</button>
+            <h2 data-key="settings">الإعدادات</h2>
+            <div class="setting-option">
+                <h3 data-key="language">اللغة</h3>
+                <div class="language-buttons">
+                    <button id="lang-en">English</button>
+                    <button id="lang-ar">العربية</button>
+                </div>
+            </div>
         </div>
     </div>
+    <div id="timings-overlay">
+        <div class="timings-panel">
+            <button id="close-timings" class="close-btn">&times;</button>
+            <h2 data-key="nav_timings">المواقيت</h2>
+            <div class="timings-list">
+                <div class="time-display" id="sunrise-overlay"></div>
+                <div class="time-display" id="sunset-overlay"></div>
+                <div class="time-display" id="midnight-overlay"></div>
+                <div class="time-display" id="lastThirdStart-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <script src="settings.js"></script>
+    <script src="language.js"></script>
+    <script src="time-utils.js"></script>
     <script src="geolocation.js"></script>
     <script src="updateLocation.js"></script>
-    <script>
-        const themeSwitch = document.getElementById('checkbox');
-        const body = document.body;
-
-        themeSwitch.addEventListener('change', () => {
-            body.classList.toggle('dark-mode', themeSwitch.checked);
-        });
-    </script>
 </body>
 </html>
