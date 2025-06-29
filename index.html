@@ -29,10 +29,14 @@
         <div class="container">
             
             <section class="location">
-                <h1 class="title" data-key="main_title">مواقيت الصلاة</h1>
-                <input type="text" id="city-input" placeholder="أدخل اسم المدينة..." data-key-placeholder="city_placeholder">
-                <p id="city-name" data-key="city_loading">... جاري تحديد الموقع</p>
-                <button id="search-button" onclick="updateLocation()" data-key="update_location_btn">تحديث الموقع</button>
+                <div class="location-header">
+                    <h1 class="title" data-key="main_title">مواقيت الصلاة</h1>
+                    <p id="city-name" data-key="city_loading">... جاري تحديد الموقع</p>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="city-input" placeholder="أدخل اسم المدينة..." data-key-placeholder="city_placeholder">
+                    <button id="search-button" onclick="updateLocation()" data-key="update_location_btn">تحديث الموقع</button>
+                </div>
             </section>
             
             <section class="map-container">
@@ -47,16 +51,22 @@
             <div class="info-panel">
                 <div class="card1">
                     <div class="clock" id="clock" dir="ltr">
-                        <span id="clock-hours">00</span><span class="colon">:</span><span id="clock-minutes">00</span><span class="colon">:</span><span id="clock-seconds">00</span> <span id="clock-ampm">AM</span>
+                        <span id="hours">00</span><span class="clock-separator">:</span><span id="minutes">00</span><span class="clock-separator">:</span><span id="seconds">00</span> <span id="ampm">AM</span>
                     </div>
                 </div>
                 <div class="card">
-                    <h2 class="date-type" data-key="hijri_date_title">التاريخ الهجري</h2>
-                    <div class="hijri-date" id="hijri-date"></div>
+                    <div class="blur-filter">
+                        <h2 class="date-type" data-key="hijri_date_title">التاريخ الهجري</h2>
+                        <div class="hijri-date" id="hijri-date"></div>
+                    </div>  
                 </div>
                 <div class="card">
-                    <h2 class="date-type" data-key="gregorian_date_title">التاريخ الميلادي</h2>
-                    <div class="gregorian-date" id="gregorian-date"></div>
+
+                    <div class="blur-filter">
+                        <h2 class="date-type" data-key="gregorian_date_title">التاريخ الميلادي</h2>
+                        <div class="gregorian-date" id="gregorian-date"></div>
+                    </div>
+                  
                 </div>
                 
             </div>

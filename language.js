@@ -16,6 +16,12 @@ const translations = {
         gregorian_date_title: "Gregorian Date",
         settings: "Settings",
         language: "Language",
+        city_loading_error_manual: "Could not get location. Please search manually.",
+        geolocation_not_supported_alert: "Geolocation is not supported by this browser. Please enter a location manually.",
+        city_input_alert: "Please enter a city name.",
+        city_search_loading: "Searching for {city}...",
+        city_not_found: "Could not find a city named \"{city}\".",
+        city_search_error: "An error occurred while searching for the city."
     },
     ar: {
         logo: "صلاتي",
@@ -34,6 +40,12 @@ const translations = {
         gregorian_date_title: "التاريخ الميلادي",
         settings: "الإعدادات",
         language: "اللغة",
+        city_loading_error_manual: "تعذر تحديد الموقع. الرجاء البحث يدوياً.",
+        geolocation_not_supported_alert: "الموقع الجغرافي غير مدعوم في هذا المتصفح. الرجاء إدخال الموقع يدوياً.",
+        city_input_alert: "الرجاء إدخال اسم المدينة",
+        city_search_loading: "جاري البحث عن {city}...",
+        city_not_found: "لم يتم العثور على مدينة باسم \"{city}\"",
+        city_search_error: "حدث خطأ أثناء البحث عن المدينة"
     }
 };
 

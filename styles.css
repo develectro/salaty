@@ -11,7 +11,7 @@ body {
     align-items: center;
 }
 .title{
-    font-size: 30px;
+    font-size: 26px; /* Slightly reduced font size */
     color: #703315;
 }
 
@@ -141,42 +141,6 @@ body {
 
 }
 
-
-.clock {
-    font-family: 'Arial', sans-serif;
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 20px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    direction: ltr;
-    grid-column: 3/4;
-    grid-row: 1/2;
-}
-
-
-.clock span, .gregorian-date, .hijri-date {
-    padding: 10px;
-    font-size: 3rem;
-    color: #fff;
-    border-radius: 5px;
-    margin: 0 5px;
-    font-feature-settings: "lnum";
-    justify-content: center;
-    align-items: center;
-
-}
-
- */
-
  body {
     font-family: "Tajawal", serif ,'Arial', sans-serif;
     margin: 0;
@@ -285,7 +249,7 @@ body.dark-mode .lang-toggle:hover {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
-    gap: 20px;
+    gap: 15px;
     width: 90%;
     margin-top: 20px;
 }
@@ -293,28 +257,46 @@ body.dark-mode .lang-toggle:hover {
 .location {
     grid-column: 1 / 2;
     background: #fdf8f2;
-    /* background-size: cover; */
-    /* background-position: center ; */
-    /* background-repeat: no-repeat; */
     color: rgb(6, 6, 6);
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
     text-align: center;
-    flex: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
 
+.location-header {
+    margin: 0;
 }
-input{
-    width: 30%;
-    border-radius: 10px;
-    border-style : none;
-    background: rgba(242, 169, 126, 0.443);
+
+.location-header .title {
+    margin: 0 0 5px 0;
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    gap: 10px; /* Add space between input and button */
+}
+
+#city-input {
+    flex-grow: 1;
+    border: 1px solid #d3a28a; /* Lighter border for a flatter look */
+    padding: 8px 15px;
+    font-size: 1em;
     color: #060404;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1.2em;
+    background: rgba(242, 169, 126, 0.443);
+    margin: 0px;
+    width: auto;
+    border-radius: 10px; /* Full radius for standalone look */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
+
 
 .map-container {
     background: #fdf8f2;
@@ -340,7 +322,7 @@ input{
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -356,7 +338,7 @@ input{
 .card1 {
     background: #fdf8f2;
     color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -380,18 +362,26 @@ input{
     align-items: center;
     justify-content: center;
 }
-.clock .colon {
-    transition: opacity 0.4s ease-in-out;
-    position: relative;
-    /* Adjust vertical alignment of the colon to center it with the numbers */
-    top: -0.1em; 
+
+.clock {
+    font-family: 'monospace'; /* Changed to monospace font */
+    font-weight: 900;
+    letter-spacing: 7px;
+    font-size: 2rem;
+    background: #b66842;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 #hours, #minutes, #seconds{
-    width: 10px;
-    height: 10px;
-    background-color: #f7f4f3;
-
-
+    /* Removed width, height, and background-color as they were causing issues */
+    /* These elements now just contain text */
 }
 .map-container{
     display: flex;
@@ -406,26 +396,47 @@ input{
     background-position: center;
 }
 
+/* Blinking animation for clock separators */
+.clock-separator {
+    animation: blink 1s ease-in-out infinite;
+    padding: 0 2px; /* Add some spacing around separators */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.clock #ampm { /* Target AM/PM specifically within the clock */
+    font-size: 1.5rem; /* Smaller font size for AM/PM */
+    vertical-align: middle; /* Align with the time text */
+    margin-left: 8px; /* Space it out from the seconds */
+    font-weight: normal; /* AM/PM doesn't need to be as bold as numbers */
+}
 
 .time-button {
-    background: #b66842;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: #c44d119d;
     color: white;
     border: none;
-    padding: 10px 15px;
-    margin: 10px;
-    font-size: 1.2em;
+    padding: 15px 20px; /* Increased padding for a larger button */
+    margin: 8px;
     border-radius: 10px;
     transition: 0.3s;
-    width: 50%;
-    min-height: 65px; /* Prevent vertical collapse during content changes */
+    width: 65%; /* Increased width to take more horizontal space */
     display: flex; /* Center content vertically and horizontally */
     align-items: center;
     justify-content: center;
     direction: ltr;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Tajawal", sans-serif; /* Using a clean Arabic-friendly font */
     font-weight: bold;
-    font-size: 30px;
-   
+    font-size: 38px; /* Made font larger */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add shadow for clarity */
 }
 
 .time-button:hover {
@@ -436,13 +447,13 @@ input{
     background-color: transparent;
     font-size: 32px;
     font-weight:700;
-    color: #703315;
+    color: #fff3ee;
 }
 .date-type{
     background-color: transparent;
     font-size: 24px;
     font-weight: bold;
-    color: #703315;
+    color: #fff3ee;
     margin: 0 0 10px 0;
 }
 .card{
@@ -451,50 +462,40 @@ input{
     background-position: center;
     background-repeat: no-repeat;
 }
-#search-button{
+
+#search-button {
     background: #b66842;
     color: white;
+    padding: 8px 15px;
     border: none;
-    padding: 10px 15px;
-    margin: 10px;
-    font-size: 1.2em;
-    border-radius: 10px;
+    font-size: 1em;
+    border-radius: 10px; /* Full radius for standalone look */
+    cursor: pointer;
     transition: 0.3s;
-    width: 20%;
-    min-width: 150px; /* Prevent horizontal collapse during loading */
+    margin: 0;
+    width: auto;
+    display: flex; /* Enable flexbox for centering */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    font-family: "Tajawal", sans-serif; /* Apply consistent font */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+
 }
 #search-button:hover {
     background: #8d4f2f;
-    color:#f6f0e6;
-   
-}
-.city-input{
-    width: 70%;
-    border-radius: 10px;
-    border-style : none;
-    background: rgba(242, 169, 126, 0.443);
-    color: #060404;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1.2em;
-}
-
-.city-input{
-    width: 70%;
-    border-radius: 10px;
-    border-style : none;
-    background: rgba(242, 169, 126, 0.443);
-    color: #060404;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1.2em;
+    border-color: #8d4f2f;
 }
 
 #city-name {
-    font-size: 1.6em;
+    font-size: 1.4em; /* Slightly reduced font size */
     font-weight: bold;
     color: #703315;
-    margin: 15px 0;
+    margin: 10px 0; /* Reduced margin */
+}
+
+#city-input:focus {
+    outline: none;
+    box-shadow: inset 0 0 5px rgba(182, 104, 66, 0.5);
 }
 
 /* iPhone-style Toggle Switch */
@@ -595,23 +596,27 @@ body.dark-mode #city-name {
 body.dark-mode .location,
 body.dark-mode .map-container,
 body.dark-mode .card,
-body.dark-mode .card1 {
+body.dark-mode .card1,
+body.dark-mode .location {
     background: #1E1E1E;
     color: #E0E0E0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .search-container {
+    /* This rule is now redundant but harmless */
 }
 
 body.dark-mode .info-panel {
     background: #121212;
 }
 
-body.dark-mode input {
+body.dark-mode #city-input {
     background: #333;
     color: #E0E0E0;
-    border: 1px solid #e67e22;
+    border: 1px solid #555; /* Flatter border for dark mode */
 }
 
-body.dark-mode #search-button,
 body.dark-mode .time-button {
     background: #e67e22;
     color: #121212;
@@ -619,12 +624,22 @@ body.dark-mode .time-button {
 
 body.dark-mode #search-button:hover,
 body.dark-mode .time-button:hover {
-    background: #f39c12; /* Lighter orange for hover */
+    background: #f39c12;
+}
+
+body.dark-mode #search-button {
+    background: #e67e22;
+    color: #121212;
+    border: none;
+}
+
+body.dark-mode #search-button:hover {
+    border-color: #f39c12;
 }
 
 body.dark-mode .clock {
     background: #e67e22;
-    color: #121212;
+    color: white; /* Changed to white for better contrast in dark mode */
 }
 
 body.dark-mode .hijri-date,
@@ -814,7 +829,7 @@ html[lang="en"] .close-btn {
     font-size: 1.5em;
     border-radius: 10px;
     direction: ltr;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Tajawal", sans-serif;
     font-weight: bold;
 }
 
@@ -858,6 +873,7 @@ html[lang="en"] .close-btn {
         flex-direction: column;
         height: auto;
         padding: 15px;
+        text-align: center; /* Center the content */
         gap: 10px;
     }
 
@@ -938,6 +954,7 @@ html[lang="en"] .close-btn {
     color: transparent !important; /* Hide button text */
     pointer-events: none; /* Prevent clicking while loading */
     position: relative;
+    text-shadow: none !important; /* Ensure text shadow is also hidden */
 }
 
 .loading::after {
@@ -964,4 +981,30 @@ body.dark-mode .loading::after {
     to {
         transform: rotate(360deg);
     }
+}
+
+.blur-filter{
+    width: 50%;
+    height: auto;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #121212ab;
+}
+
+.card .blur-filter,
+.card1 .blur-filter {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 10px;
+    border: solid 1px  #f0d2c348
+}
+
+body.dark-mode .card .blur-filter,
+body.dark-mode .card1 .blur-filter {
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), inset -3px -3px 7px rgba(50, 50, 50, 0.3);
 }

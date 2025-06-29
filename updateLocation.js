@@ -4,8 +4,10 @@ async function updateLocation() {
     const searchButton = document.getElementById('search-button');
     const city = cityInput.value.trim();
 
+    const lang = document.documentElement.lang || 'ar';
+
     if (!city) {
-        alert('الرجاء إدخال اسم المدينة');
+        alert(translations[lang].city_input_alert);
         return;
     }
 
@@ -13,7 +15,7 @@ async function updateLocation() {
     cityInput.disabled = true;
     searchButton.disabled = true;
     searchButton.classList.add('loading');
-    cityNameElement.innerText = `... جاري البحث عن ${city}`;
+    cityNameElement.innerText = translations[lang].city_search_loading.replace('{city}', city);
     // --- End Loading State ---
 
     const geocodeAPI = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}&accept-language=ar,en&limit=1`;
@@ -37,11 +39,11 @@ async function updateLocation() {
             cityNameElement.innerText = location.display_name;
             await getLocationTiming(lat, lon); // This function is in geolocation.js
         } else {
-            cityNameElement.innerText = `لم يتم العثور على مدينة باسم "${city}"`;
+            cityNameElement.innerText = translations[lang].city_not_found.replace('{city}', city);
         }
     } catch (error) {
         console.error('Error fetching location data:', error);
-        cityNameElement.innerText = 'حدث خطأ أثناء البحث عن المدينة';
+        cityNameElement.innerText = translations[lang].city_search_error;
     } finally {
         // --- Restore UI ---
         cityInput.disabled = false;
@@ -50,36 +52,41 @@ async function updateLocation() {
     }
 }
 
+let lastCheckedDay = new Date().getDate(); // Keep track of the current day
+
 function updateClock() {
+    // Get the current time
     const now = new Date();
+    const currentDay = now.getDate();
+
+    // Check if the day has changed (e.g., it's past midnight)
+    if (currentDay !== lastCheckedDay) {
+        console.log("New day detected. Refreshing dates and prayer times.");
+        lastCheckedDay = currentDay;
+
+        // Refresh the Hijri and Gregorian dates
+        updateDates();
+
+        // Refresh prayer times using the stored location
+        const lat = sessionStorage.getItem('userLat');
+        const lon = sessionStorage.getItem('userLng');
+        if (lat && lon) {
+            getLocationTiming(parseFloat(lat), parseFloat(lon));
+        }
+    }
+
     let hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
     const ampm = hours >= 12 ? 'PM' : 'AM';
-
     hours = hours % 12;
-    hours = hours || 12; // Convert hour '0' to '12'
-
-    // Get elements
-    const hoursElement = document.getElementById('clock-hours');
-    const minutesElement = document.getElementById('clock-minutes');
-    const secondsElement = document.getElementById('clock-seconds');
-    const ampmElement = document.getElementById('clock-ampm');
-    const colonElements = document.querySelectorAll('#clock .colon');
-
-    // Update time parts if they exist
-    if (hoursElement && minutesElement && secondsElement && ampmElement) {
-        hoursElement.innerText = String(hours).padStart(2, '0');
-        minutesElement.innerText = String(minutes).padStart(2, '0');
-        secondsElement.innerText = String(seconds).padStart(2, '0');
-        ampmElement.innerText = ampm;
-    }
-
-    // Blink the colons using opacity for a smooth fade effect
-    const opacity = seconds % 2 === 0 ? 1 : 0;
-    colonElements.forEach(colon => {
-        colon.style.opacity = opacity;
-    });
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+  
+    // Update the content of the specific span elements.
+    document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+    document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+    document.getElementById('ampm').innerText = ampm;
 }
 
 function updateDates() {
