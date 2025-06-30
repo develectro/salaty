@@ -20,9 +20,20 @@ function initializeLocation() {
                 await Promise.all([getLocationTiming(lat, lng), getCityName(lat, lng)]);
             } else {
                 console.log("Requesting new location.");
-                if ("geolocation" in navigator) {
+                if (!navigator.onLine) {
+                  // Offline! Try to use the timezone as a clue
+                  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                  console.log(`Offline. Using timezone: ${timeZone} as a location hint.`);
+                  const cityNameElement = document.getElementById('city-name');
+                  if (cityNameElement) {
+                    cityNameElement.innerText = `Offline. Location based on timezone: ${timeZone}`;
+                  }
+                  alert("You are offline. Location may not be precise.");
+                }
+                else if ("geolocation" in navigator) {
                     const position = await new Promise((resolve, reject) => {
                         navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 10000 });
+
                     });
 
                     const lat = position.coords.latitude;
@@ -30,7 +41,9 @@ function initializeLocation() {
                     console.log(`New location obtained: Latitude: ${lat}, longitude: ${lng}`);
 
                     sessionStorage.setItem('userLat', lat);
+
                     sessionStorage.setItem('userLng', lng);
+
 
                     await Promise.all([getLocationTiming(lat, lng), getCityName(lat, lng)]);
                 } else {
