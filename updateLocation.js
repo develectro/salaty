@@ -113,15 +113,13 @@ function updateClock() {
     // Update the clock display elements
     let hours = now.getHours();
     const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
     const ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
     hours = hours ? hours : 12; // The hour '0' should be '12'
   
     document.getElementById('hours').innerText = String(hours).padStart(2, '0');
     document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-    document.getElementById('ampm').innerText = ampm;
+    document.getElementById('seconds').innerText = String(now.getSeconds()).padStart(2, '0');
 }
 
 /**

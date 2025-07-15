@@ -116,7 +116,7 @@ async function getLocationTiming(lat, lon) {
         const [locationTimezone, utcTimes] = await Promise.all([timezonePromise, sunriseUTCPromise]);
 
         // Helper function to convert ISO UTC times to a local 12-hour time string.
-        const convertToLocalTime = (isoString) => {
+        const convertToLocalTime = (isoString) => { // Removed unused timezone parameter
             const date = new Date(isoString);
             const options = {
                 hour: 'numeric',
@@ -172,8 +172,8 @@ async function getCityName(lat, lon) {
         }
         const data = await response.json();
         console.log("Reverse geocoding data:", data);
-        const city = data.address.city || data.address.town || data.address.village || "Unknown Location";
-        const country = data.address.country || "";
+        const city = data.address?.city || data.address?.town || data.address?.village || "Unknown Location";
+        const country = data.address?.country || "";
         if (cityNameElement) {
             cityNameElement.innerText = `${city}, ${country}`;
         }
