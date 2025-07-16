@@ -14,9 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Initialization ---
-    updateDates(); // Set dates immediately
-    updateClock(); // Set clock immediately
-    setInterval(updateClock, 60000); // Update clock every second for live ticking
+    updateDates(); // Initial call to set dates
+    updateClock(); // Initial call to set the clock immediately
+
+    // This function synchronizes the clock updates with the actual start of each minute.
+    function startSyncedClock() {
+        const now = new Date();
+        // Calculate the milliseconds remaining until the next minute begins.
+        const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
+
+        // The first synchronized update will happen at the top of the next minute.
+        setTimeout(() => {
+            updateClock(); // Update right on the minute change.
+            // Then, set a regular interval to update every 60 seconds thereafter.
+            setInterval(updateClock, 60000);
+        }, delay);
+    }
+
+    startSyncedClock();
 });
 
 // Keep track of the last checked day to refresh data automatically at midnight
@@ -119,7 +134,7 @@ function updateClock() {
   
     document.getElementById('hours').innerText = String(hours).padStart(2, '0');
     document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').innerText = String(now.getSeconds()).padStart(2, '0');
+    // document.getElementById('seconds').innerText = String(now.getSeconds()).padStart(2, '0'); // Remove or comment out this line
 }
 
 /**
