@@ -31,7 +31,7 @@ body {
 }
 
 .logo {
-    font-size: 1.5em;
+    font-size: 1.3em; /* Reduced logo size */
     font-weight: bold;
     margin-left: 20px;
 }
@@ -220,7 +220,7 @@ body {
 }
 
 .lang-toggle {
-    background: #b66842;
+    background: #b66842; /* Slightly darker to match reduced size */
     color: white;
     border: none;
     padding: 8px 15px;
@@ -228,8 +228,9 @@ body {
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
-    font-family: "Tajawal", serif;
+    font-family: "Tajawal", serif; /* Consistent font */
     font-weight: bold;
+    font-size: 0.9em; /* Smaller font size for button text */
 }
 
 .lang-toggle:hover {
@@ -237,12 +238,12 @@ body {
 }
 
 body.dark-mode .lang-toggle {
-    background: #e67e22;
-    color: #121212;
+    background: #4FD1C5; /* Faint Teal */
+    color: #0F172A; /* Dark Slate */
 }
 
 body.dark-mode .lang-toggle:hover {
-    background: #f39c12;
+    background: #81E6D9; /* Lighter Faint Teal */
 }
 
 .container {
@@ -555,42 +556,47 @@ body.dark-mode .lang-toggle:hover {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: #121212;
-    color: #E0E0E0;
+    background-color: #0F172A; /* Dark Slate */
+    color: #E2E8F0; /* Light Slate Gray for text */
 }
 
 body.dark-mode .navbar {
-    background: #1E1E1E;
-    color: #e67e22;
+    background: #1E293B; /* Slate */
+    color: #4FD1C5; /* Faint Teal */    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 body.dark-mode .logo {
-    background: #e67e22;
-    color: #121212;
+    background: #4FD1C5; /* Faint Teal */
+    color: #0F172A; /* Dark Slate */    
+    box-shadow: 0 0 10px rgba(79, 209, 197, 0.2);
 }
 
 body.dark-mode .nav-links li {
-    background: #2c2c2c;
+    background: #334155; /* Darker Slate */
 }
 
 body.dark-mode .nav-links a {
-    color: #e67e22;
+    color: #4FD1C5; /* Faint Teal */    
+    text-shadow: 0 0 5px rgba(79, 209, 197, 0.3);
 }
 
 body.dark-mode .nav-links li:hover {
-    background: #e67e22;
+    background: #4FD1C5; /* Faint Teal */
 }
 
 body.dark-mode .nav-links li:hover a {
-    color: #121212;
+    color: #0F172A; /* Dark Slate */
 }
 
 body.dark-mode .title {
-    color: #e67e22;
+    color: #4FD1C5; /* Faint Teal */
+    text-shadow: 0 0 8px rgba(79, 209, 197, 0.4);
 }
 
 body.dark-mode #city-name {
-    color: #e67e22;
+    color: #4FD1C5; /* Faint Teal */
+    text-shadow: 0 0 6px rgba(79, 209, 197, 0.3);
 }
 
 body.dark-mode .location,
@@ -598,9 +604,9 @@ body.dark-mode .map-container,
 body.dark-mode .card,
 body.dark-mode .card1,
 body.dark-mode .location {
-    background: #1E1E1E;
-    color: #E0E0E0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background: #1E293B; /* Slate */
+    color: #E2E8F0; /* Light Slate Gray */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode .search-container {
@@ -608,50 +614,54 @@ body.dark-mode .search-container {
 }
 
 body.dark-mode .info-panel {
-    background: #121212;
+    background: #0F172A; /* Dark Slate */
 }
 
 body.dark-mode #city-input {
-    background: #333;
-    color: #E0E0E0;
-    border: 1px solid #555; /* Flatter border for dark mode */
+    background: #334155; /* Darker Slate */
+    color: #E2E8F0; /* Light Slate Gray */
+    border: 1px solid #475569; /* Slate border */
 }
 
 body.dark-mode .time-button {
-    background: #e67e22;
-    color: #121212;
+    background: #4FD1C5; /* Faint Teal */
+    color: #0F172A; /* Dark Slate */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 body.dark-mode #search-button:hover,
 body.dark-mode .time-button:hover {
-    background: #f39c12;
+    background: #81E6D9; /* Lighter Faint Teal */
 }
 
 body.dark-mode #search-button {
-    background: #e67e22;
-    color: #121212;
+    background: #4FD1C5; /* Faint Teal */
+    color: #0F172A; /* Dark Slate */
     border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 body.dark-mode #search-button:hover {
-    border-color: #f39c12;
+    border-color: #81E6D9;
 }
 
 body.dark-mode .clock {
-    background: #e67e22;
-    color: white; /* Changed to white for better contrast in dark mode */
+    background: #4FD1C5; /* Faint Teal */
+    color: #0F172A; /* Dark Slate */    
+    box-shadow: 0 0 15px rgba(79, 209, 197, 0.3);
 }
 
 body.dark-mode .hijri-date,
 body.dark-mode .gregorian-date,
 body.dark-mode .date-type {
     background-color: transparent;
-    color: #e67e22;
+    color: #4FD1C5; /* Faint Teal */    
+    text-shadow: 0 0 8px rgba(79, 209, 197, 0.4);
 }
 
 body.dark-mode .hijri-date,
 body.dark-mode .gregorian-date {
-    color: #E0E0E0;
+    color: #E2E8F0; /* Light Slate Gray */
 }
 
 body.dark-mode .card {
@@ -663,13 +673,13 @@ body.dark-mode .map-container {
 }
 
 input:checked + .slider {
-    background-color: #e67e22;
+    background-color: #4FD1C5; /* Faint Teal */
 }
 
 input:checked + .slider:before {
     transform: translateX(26px);
     content: "🌙";
-    color: #121212;
+    color: #0F172A; /* Dark Slate */
 }
 
 /* Settings Overlay */
@@ -749,20 +759,20 @@ input:checked + .slider:before {
 /* Dark mode styles for settings panel */
 body.dark-mode .settings-panel,
 body.dark-mode .timings-panel {
-    background: rgba(30, 30, 30, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(30, 41, 59, 0.85); /* Slate with transparency */
+    border: 1px solid rgba(79, 209, 197, 0.2); /* Faint Teal border */
 }
 
 body.dark-mode .settings-panel h2,
 body.dark-mode .settings-panel h3,
 body.dark-mode .close-btn,
 body.dark-mode .timings-panel h2 {
-    color: #e67e22;
+    color: #4FD1C5; /* Faint Teal */
 }
 
 body.dark-mode .time-display {
-    background: #e67e22;
-    color: #121212;
+    background: #4FD1C5; /* Faint Teal */
+    color: #0F172A; /* Dark Slate */
 }
 
 /* LTR Styles */
@@ -973,8 +983,8 @@ html[lang="en"] .close-btn {
 }
 
 body.dark-mode .loading::after {
-    border: 3px solid rgba(18, 18, 18, 0.3);
-    border-top-color: #121212;
+    border: 3px solid rgba(15, 23, 42, 0.3);
+    border-top-color: #0F172A; /* Dark Slate */
 }
 
 @keyframes spin {
@@ -1006,5 +1016,6 @@ body.dark-mode .loading::after {
 
 body.dark-mode .card .blur-filter,
 body.dark-mode .card1 .blur-filter {
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), inset -3px -3px 7px rgba(50, 50, 50, 0.3);
+    /* Adjusted neumorphic shadow for the new theme */
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), inset -3px -3px 7px rgba(71, 85, 105, 0.3);
 }

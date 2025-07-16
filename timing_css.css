@@ -106,32 +106,34 @@ html, body {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: #121212;
+    background-color: #0F172A; /* Dark Slate */
 }
 
 body.dark-mode .container {
-    background-color: #1a1a1a;
+    background-color: #0F172A; /* Dark Slate */
 }
 
 body.dark-mode .row1, body.dark-mode .row2 {
-    background-color: #242424;
+    background-color: #1E293B; /* Slate */
 }
 
 body.dark-mode #item1, 
 body.dark-mode #item2, 
 body.dark-mode #item3, 
 body.dark-mode #item4 {
-    background-color: #333;
-    border: 1px solid #e67e22;
-    color: #e67e22;
+    background-color: #334155; /* Darker Slate */
+    border: 1px solid #4FD1C5; /* Faint Teal */
+    color: #4FD1C5; /* Faint Teal */    
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 8px rgba(79, 209, 197, 0.5);
 }
 
 input:checked + .slider {
-    background-color: #e67e22;
+    background-color: #4FD1C5; /* Faint Teal */
 }
 
 input:checked + .slider:before {
     transform: translateX(26px);
     content: "🌙";
-    color: #121212;
+    color: #0F172A; /* Dark Slate */
 }

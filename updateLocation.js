@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Initialization ---
     updateDates(); // Set dates immediately
     updateClock(); // Set clock immediately
-    setInterval(updateClock, 1000); // Update clock every second
+    setInterval(updateClock, 60000); // Update clock every second for live ticking
 });
 
 // Keep track of the last checked day to refresh data automatically at midnight
