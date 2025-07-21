@@ -86,7 +86,7 @@ async function getLocationTiming(lat, lon) {
     // Promise to get the timezone, with a fallback to the browser's timezone.
     const timezonePromise = fetch(`https://timeapi.io/api/TimeZone/coordinate?latitude=${lat}&longitude=${lon}`)
         .then(res => {
-            if (!res.ok) throw new Error('Timezone API request failed.');
+            if (!res.ok) throw new Error(`Timezone API request failed with status: ${res.status}`);
             return res.json();
         })
         .then(data => {
@@ -103,7 +103,7 @@ async function getLocationTiming(lat, lon) {
     // Using formatted=0 returns ISO 8601 strings, which are more reliable to parse.
     const sunriseUTCPromise = fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lon}&date=today&formatted=0`)
         .then(res => {
-            if (!res.ok) throw new Error('Network response was not ok for sunrise-sunset API');
+            if (!res.ok) throw new Error(`Network response was not ok for sunrise-sunset API: ${res.status}`);
             return res.json();
         })
         .then(data => {
@@ -168,7 +168,7 @@ async function getCityName(lat, lon) {
     try {
         const response = await fetch(reverseGeocodeAPI);
         if (!response.ok) {
-            throw new Error('Network response was not ok for reverse geocoding');
+            throw new Error(`Network response was not ok for reverse geocoding: ${response.status}`);
         }
         const data = await response.json();
         console.log("Reverse geocoding data:", data);

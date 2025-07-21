@@ -1,10 +1,34 @@
+:root {
+    --timing-bg-primary: #FFF3E0;
+    --timing-bg-container: #FFCC80;
+    --timing-bg-row1: #FFA726;
+    --timing-bg-row2: #FFB74D;
+    --timing-item-bg: #FFE0B2;
+    --timing-item-border: #FF9800;
+    --timing-item-text: #BF360C;
+    --timing-item-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --timing-text-shadow: none;
+}
+
+body.dark-mode {
+    --timing-bg-primary: #0F172A;
+    --timing-bg-container: #0F172A;
+    --timing-bg-row1: #1E293B;
+    --timing-bg-row2: #1E293B;
+    --timing-item-bg: #334155;
+    --timing-item-border: #799dca;
+    --timing-item-text: #799dca;
+    --timing-item-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.4);
+    --timing-text-shadow: 0 0 8px rgba(121, 157, 202, 0.5);
+}
+
 html, body {
     height: 100%;
     width: 100%;
     margin: 0;
-    font-size: 70px;
-    background-color: #FFF3E0; /* لون خلفية برتقالي هادئ */
-    overflow: hidden; /* منع overflow */
+    font-size: clamp(24px, 5vw, 70px); /* Responsive font size */
+    background-color: var(--timing-bg-primary);
+    overflow: hidden;
 }
 
 .container {
@@ -16,20 +40,20 @@ html, body {
     row-gap: auto;
     flex-direction: column;
     align-items: center;
-    overflow: hidden; /* منع overflow */
+    overflow: hidden;
 }
 
 .row1, .row2 {
-    height: 50%; /* تعديل الارتفاع لتجنب overflow */
+    height: 50%;
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around; /* توزيع البطاقات بالتساوي */
-    background-color: #FFA726; /* لون برتقالي هادئ */
+    justify-content: space-around;
+    background-color: var(--timing-bg-row1);
 }
 
 .row2 {
-    background-color: #FFB74D; /* لون برتقالي هادئ */
+    background-color: var(--timing-bg-row2);
 }
 
 #item1, #item2, #item3, #item4 {
@@ -39,12 +63,13 @@ html, body {
     justify-content: center; /* لتوسيط النص أفقياً */
     align-items: center; /* لتوسيط النص عمودياً */
     text-align: center;
-    background-color: #FFE0B2; /* لون خلفية برتقالي هادئ */
-    border: 1px solid #FF9800; /* حدود برتقالية */
-    color: #BF360C; /* لون نص برتقالي غامق */
+    background-color: var(--timing-item-bg);
+    border: 1px solid var(--timing-item-border);
+    color: var(--timing-item-text);
     margin: 10px; /* فاصل بين البطاقات */
     border-radius: 5px; /* حواف دائرية بقطر 5 بكسلات */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف للبطاقات */
+    box-shadow: var(--timing-item-shadow);
+    text-shadow: var(--timing-text-shadow);
 }
 
 /* iPhone-style Toggle Switch */
@@ -104,36 +129,15 @@ html, body {
 
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #0F172A; /* Dark Slate */
-}
-
-body.dark-mode .container {
-    background-color: #0F172A; /* Dark Slate */
-}
-
-body.dark-mode .row1, body.dark-mode .row2 {
-    background-color: #1E293B; /* Slate */
-}
-
-body.dark-mode #item1, 
-body.dark-mode #item2, 
-body.dark-mode #item3, 
-body.dark-mode #item4 {
-    background-color: #334155; /* Darker Slate */
-    border: 1px solid #4FD1C5; /* Faint Teal */
-    color: #4FD1C5; /* Faint Teal */    
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.4);
-    text-shadow: 0 0 8px rgba(79, 209, 197, 0.5);
-}
-
 input:checked + .slider {
-    background-color: #4FD1C5; /* Faint Teal */
+    /* These variables are defined in the main styles.css, but it's good practice
+       to have fallbacks or define them here if this page can be standalone.
+       Assuming styles.css is loaded first, this will work. */
+    background-color: var(--toggle-bg-checked, #799dca);
 }
 
 input:checked + .slider:before {
     transform: translateX(26px);
-    content: "🌙";
-    color: #0F172A; /* Dark Slate */
+    content: var(--toggle-icon, "🌙");
+    color: var(--toggle-icon-color, #0F172A);
 }
