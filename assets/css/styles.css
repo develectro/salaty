@@ -12,8 +12,8 @@
     --input-border: #d3a28a;
     --shadow-main: rgba(0, 0, 0, 0.1);
     --shadow-card: rgba(0, 0, 0, 0.2);
-    --map-image: url('./map.jpg');
-    --decoration-image: url('./decoration.png');
+    --map-image: url('../images/map.jpg');
+    --decoration-image: url('../images/decoration.png');
     --toggle-icon: "☀️";
     --toggle-icon-color: #f39c12;
     --toggle-bg: #ccc;
@@ -38,8 +38,8 @@ body.dark-mode {
     --input-border: #475569;
     --shadow-main: rgba(0, 0, 0, 0.6);
     --shadow-card: rgba(0, 0, 0, 0.5);
-    --map-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./map.jpg');
-    --decoration-image: none;
+    --map-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/map.jpg');
+    --decoration-image: none; /* In dark mode, decoration is turned off, but good to be consistent */
     --toggle-icon: "🌙";
     --toggle-icon-color: var(--text-on-accent);
     --toggle-bg-checked: var(--accent-primary);

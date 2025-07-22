@@ -68,7 +68,7 @@ To run this project on your local machine, follow these simple steps:
 
 --- -->
 
-<!-- ## 📁 Project Structure
+## 📁 Project Structure
 
 ```
 SalatyDevelopment/
