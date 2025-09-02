@@ -69,7 +69,7 @@ To run this project on your local machine, follow these simple steps:
 
 <!-- ## 📁 Project Structure
 
-```
+
 SalatyDevelopment/
 ├── images/                 # Decorative images and icons
 ├── index.html              # Main HTML structure
