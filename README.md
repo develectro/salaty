@@ -4,8 +4,7 @@ Salaty is a clean, modern, and responsive web application designed to help Musli
 
 <!-- ![Salaty Screenshot](<PLACEHOLDER: Add a screenshot of your application here. For example, 'salaty-screenshot.png'>) -->
 <!-- ![Salaty Screenshot](<PLACEHOLDER: Add a screenshot of your application here. For example, 'salaty-screenshot.png'>) -->
-
-
+<!-- ![Salaty Screenshot](<PLACEHOLDER: Add a screenshot of your application here. For example, 'salaty-screenshot.png'>) -->
 
 
 ## ✨ Key Features
