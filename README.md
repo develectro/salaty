@@ -3,6 +3,7 @@
 Salaty is a clean, modern, and responsive web application designed to help Muslims easily track prayer-related times. It automatically detects your location to provide accurate timings and offers a beautiful, user-friendly interface with both light and dark modes.
 
 <!-- ![Salaty Screenshot](<PLACEHOLDER: Add a screenshot of your application here. For example, 'salaty-screenshot.png'>) -->
+<!-- ![Salaty Screenshot](<PLACEHOLDER: Add a screenshot of your application here. For example, 'salaty-screenshot.png'>) -->
 
 
 
