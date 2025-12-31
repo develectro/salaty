@@ -1,4 +1,4 @@
-# Salaty (صلاتي) - Prayer Times Web Application
+# Salaty (صلاتي) - Prayer Times Web Application.
 
 Salaty is a clean, modern, and responsive web application designed to help Muslims easily track prayer-related times. It automatically detects your location to provide accurate timings and offers a beautiful, user-friendly interface with both light and dark modes.
 
